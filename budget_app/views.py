@@ -55,7 +55,7 @@ class BudgetsView(View):
         return render(request, 'budget_app/budget_view.html', ctx)
 
 
-class AddBudgetsView(View):
+class AddBudgetView(View):
     def get(self, request):
         form = AddBudgetForm
         ctx = {
