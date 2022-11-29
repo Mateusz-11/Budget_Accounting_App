@@ -12,8 +12,8 @@
     style="background-color: {{ color }}"
     {% endif %}
     >
-    <div class="p-3 mb-2 bg-info text-dark">
-        Zalogowany: {{ request.user }} - {{ request.user.is_authenticated }}
+    <div class="p-3 mb-2 bg-dark text-white">
+        Logged: <i>{{ request.user }}</i>
     </div>
 
         {% block title %}{% endblock %}
@@ -24,10 +24,9 @@
         <p>{{ message }}</p>
     {% endfor %}
 
-    <footer  class="p-3 mb-2 bg-info text-dark">
-      <strong>
-        Made by Matthew in 2022
-      </strong>
+    <footer  class="p-3 mb-2 bg-dark text-white">
+      <strong>Made by Matthew in 2022</strong>
+        <a href="admin">Admin Panel</a>
    </footer>
     </body>
 </html>
