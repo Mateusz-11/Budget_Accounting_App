@@ -1,5 +1,7 @@
 from django import forms
 
+from budget_app.models import Category, Budget, Contractors
+
 
 class AddContractorsForm(forms.Form):
     contractor_name = forms.CharField(max_length=255)
@@ -17,4 +19,14 @@ CATEGORY = (
 class AddBudgetForm(forms.Form):
     budget_name = forms.IntegerField()
     plan = forms.IntegerField()
-    id_category = forms.ChoiceField(choices=CATEGORY)
+    id_category = forms.ModelChoiceField(queryset=Category.objects.all())
+    # id_category = forms.ChoiceField(choices=CATEGORY)  # old version
+
+
+class AddInvoiceForm(forms.Form):
+    budget = forms.ModelChoiceField(queryset=Budget.objects.all())
+    service_name = forms.CharField(max_length=64)
+    contractor_name = forms.ModelChoiceField(queryset=Contractors.objects.all())
+    id_category = forms.ModelChoiceField(queryset=Category.objects.all())
+    amount = forms.IntegerField()
+    date_of_issue = forms.DateField()

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
-from budget_app.forms import AddContractorsForm, AddBudgetForm
+from budget_app.forms import AddContractorsForm, AddBudgetForm, AddInvoiceForm
 from budget_app.models import Category, Contractors, Budget
 
 
@@ -62,6 +62,20 @@ class AddBudgetView(View):
             'form': form,
         }
         return render(request, 'budget_app/addbudget_view.html', ctx)
+
+    def post(self, request):
+        form = AddBudgetForm(request.POST)
+        if form.is_valid():
+            pass
+
+
+class AddInvoiceView(View):
+    def get(self, request):
+        form = AddInvoiceForm
+        ctx = {
+            'form': form,
+        }
+        return render(request, 'budget_app/addinvoice_view.html', ctx)
 
     def post(self, request):
         form = AddBudgetForm(request.POST)
