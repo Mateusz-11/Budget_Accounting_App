@@ -12,6 +12,10 @@
     style="background-color: {{ color }}"
     {% endif %}
     >
+    <div class="p-3 mb-2 bg-info text-dark">
+        Zalogowany: {{ request.user }} - {{ request.user.is_authenticated }}
+    </div>
+
         {% block title %}{% endblock %}
 
         {% block content %}
@@ -19,9 +23,8 @@
     {% for message in messages %}
         <p>{{ message }}</p>
     {% endfor %}
-    {{ request.user }}
-    {{ request.user.is_authenticated }}
-    <footer>
+
+    <footer  class="p-3 mb-2 bg-info text-dark">
       <strong>
         Made by Matthew in 2022
       </strong>
