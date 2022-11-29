@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from budget_app.forms import AddContractorsForm
-from budget_app.models import Category, Contractors
+from budget_app.models import Category, Contractors, Budget
 
 
 # Create your views here.
@@ -44,3 +44,21 @@ class ContractorsView(View):
             c.save()
             return redirect('contractors-view')
         return render(request, 'budget_app/contractors_view.html', locals())
+
+
+class BudgetsView(View):
+    def get(self, request):
+        budget = Budget.objects.all()
+        ctx = {
+            'budget': budget,
+        }
+        return render(request, 'budget_app/budget_view.html', ctx)
+
+
+class AddBudgetsView(View):
+    def get(self, request):
+        form = AddBudgetForm
+        ctx = {
+            'form': form,
+        }
+        return render(request, 'budget_app/addbudget_view.html', ctx)

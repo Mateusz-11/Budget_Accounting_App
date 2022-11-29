@@ -8,11 +8,21 @@
 
     </head>
     <body
+
     {% if color %}
     style="background-color: {{ color }}"
     {% endif %}
     >
-    <div class="p-3 mb-2 bg-dark text-white">
+        <h2>Subpages:</h2>
+    <ul>
+        <li><a href='/'>Homepage</a></li>
+        <li><a href='/budgets'>Budgets</a> - Not Ready</li>
+        <li><a href='/add-budgets'>Add budgets</a> - Not Ready</li>
+        <li><a href='/contractors'>Contractors</a></li>
+        <li><a href='/categories'>Categories</a></li>
+
+    </ul>
+    <div class="p-3 mb-2 bg-secondary text-white">
         Logged: <i>{{ request.user }}</i>
     </div>
 
@@ -24,7 +34,7 @@
         <p>{{ message }}</p>
     {% endfor %}
 
-    <footer  class="p-3 mb-2 bg-dark text-white">
+    <footer  class="p-3 mb-2 bg-secondary text-white">
       <strong>Made by Matthew in 2022</strong>
         <a href="admin">Admin Panel</a>
    </footer>

@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from budget_app.views import HomeView, CategoryView, ContractorsView
+from budget_app.views import HomeView, CategoryView, ContractorsView, BudgetsView, AddBudgetsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name="home-view"),
     path('categories/', CategoryView.as_view(), name="categories-view"),
     path('contractors/', ContractorsView.as_view(), name="contractors-view"),
+    path('budgets/', BudgetsView.as_view(), name="budgets-view"),
+    path('add-budgets/', AddBudgetsView.as_view(), name="addbudgets-view"),
 ]

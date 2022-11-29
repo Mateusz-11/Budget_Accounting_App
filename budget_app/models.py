@@ -30,7 +30,7 @@ class Service(models.Model):
 
 class Budget(models.Model):
     id_budget = models.BigAutoField(primary_key=True)
-    budget_name = models.IntegerField
+    budget_name = models.IntegerField(default=2000)
     plan = models.IntegerField(default=0)
     execution = models.IntegerField(default=0)
     id_category = models.ManyToManyField(Category)
