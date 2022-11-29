@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from budget_app.views import HomeView
+from budget_app.views import HomeView, CategoryView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name="home-view"),
+    path('category/', CategoryView.as_view(), name="category-view"),
 ]
