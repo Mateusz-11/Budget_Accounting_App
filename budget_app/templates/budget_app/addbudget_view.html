@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'budget_app/base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <div>
+        <h3>Tworzysz nowy budżet. Wpisz rok, oraz planowaną wartość budżetu.</h3>
+    </div>
+
+    <div>
+        <h3>Form to add budgets:</h3>
+       <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}<br/>
+            <input type="submit" value="Add Budget"/>
+        </form>
+    </div>
+{% endblock %}
