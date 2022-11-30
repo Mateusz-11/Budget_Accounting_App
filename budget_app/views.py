@@ -1,15 +1,35 @@
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views import View
 
-from budget_app.forms import AddContractorsForm, AddBudgetForm, AddInvoiceForm
+from budget_app.forms import AddContractorsForm, AddBudgetForm, AddInvoiceForm, LoginForm
 from budget_app.models import Category, Contractors, Budget
 
 
 # Create your views here.
 class HomeView(View):
     def get(self, request):
-        return render(request, 'budget_app/home_view.html')
+        form = LoginForm()
+        return render(request, 'budget_app/home_view.html', locals())
 
+    def post(self, request):
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('login')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user:
+                login(request, user)
+            else:
+                form.add_error(None, 'Niewłaściwe dane logowania')
+        return render(request, 'budget_app/home_view.html', locals())
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        # return render(request, 'budget_app/home_view.html', locals())
+        return redirect('home-view')
 
 class CategoryView(View):
     def get(self, request):
@@ -18,6 +38,7 @@ class CategoryView(View):
             'categories': cat,
         }
         return render(request, 'budget_app/categories_view.html', ctx)
+
 
 class ContractorsView(View):
     def get(self, request):
@@ -81,3 +102,5 @@ class AddInvoiceView(View):
         form = AddBudgetForm(request.POST)
         if form.is_valid():
             pass
+
+

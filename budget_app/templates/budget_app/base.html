@@ -1,43 +1,58 @@
 <!doctype html>
 {% load static %}
 <html>
-    <head>
-        <meta charset="utf-8">
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<head>
+    <meta charset="utf-8">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    </head>
-    <body
+</head>
+<body
 
-    {% if color %}
-    style="background-color: {{ color }}"
-    {% endif %}
-    >
+        {% if color %}
+            style="background-color: {{ color }}"
+        {% endif %}
+>
+{% if request.user.is_authenticated %}
+    <div>
         <h2>Subpages:</h2>
-    <ul>
-        <li><a href='/'>Homepage</a> - Not Ready</li>
-        <li><a href='/budgets'>Budgets</a> - Not Ready</li>
-        <li><a href='/add-budget'>Add budget</a> - Not Ready</li>
-        <li><a href='/add-invoice'>Add invoice</a> - Not Ready</li>
-        <li><a href='/contractors'>Contractors</a></li>
-        <li><a href='/categories'>Categories</a></li>
-
-    </ul>
-    <div class="p-3 mb-2 bg-secondary text-white">
-        Logged: <i>{{ request.user }}</i>
+        <ul>
+            <li><a href='/'>Homepage</a> - Not Ready</li>
+            <li><a href='/budgets'>Budgets</a> - Not Ready</li>
+            <li><a href='/add-budget'>Add budget</a> - Not Ready</li>
+            <li><a href='/add-invoice'>Add invoice</a> - Not Ready</li>
+            <li><a href='/contractors'>Contractors</a></li>
+            <li><a href='/categories'>Categories</a></li>
+        </ul>
     </div>
 
-        {% block title %}{% endblock %}
+{% else %}
 
-        {% block content %}
-        {% endblock %}
-    {% for message in messages %}
-        <p>{{ message }}</p>
-    {% endfor %}
+{% endif %}
 
-    <footer  class="p-3 mb-2 bg-secondary text-white">
-      <strong>Made by Matthew in 2022</strong>
-        <a href="admin">Admin Panel</a>
-   </footer>
-    </body>
+<div class="p-3 mb-2 bg-secondary text-white">
+    {% if request.user.is_authenticated %}
+        <span>
+            Logged: <strong>{{ request.user }}</strong>  </span> - <span> <a href="{% url 'logout' %}" class="link-light">Logout</a>
+        </span>
+    {% else %}
+        <p><a href="{% url 'home-view' %}" class="link-light">Login</a></p>
+    {% endif %}
+</div>
+
+
+{% block title %}{% endblock %}
+
+{% block content %}
+{% endblock %}
+{% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+
+<footer class="p-3 mb-2 bg-secondary text-white">
+    <strong>Made by Matthew in 2022</strong>
+    <a href="admin" class="link-light">Admin Panel</a>
+</footer>
+</body>
 </html>

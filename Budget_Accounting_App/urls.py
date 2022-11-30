@@ -16,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from budget_app.views import HomeView, CategoryView, ContractorsView, BudgetsView, AddBudgetView, AddInvoiceView
-
+from budget_app.views import HomeView, LogoutView, CategoryView, ContractorsView, BudgetsView, AddBudgetView, AddInvoiceView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name="home-view"),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('categories/', CategoryView.as_view(), name="categories-view"),
     path('contractors/', ContractorsView.as_view(), name="contractors-view"),
     path('budgets/', BudgetsView.as_view(), name="budgets-view"),
     path('add-budget/', AddBudgetView.as_view(), name="addbudget-view"),
     path('add-invoice/', AddInvoiceView.as_view(), name="addinvoice-view"),
+
 ]

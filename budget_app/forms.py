@@ -30,3 +30,8 @@ class AddInvoiceForm(forms.Form):
     id_category = forms.ModelChoiceField(queryset=Category.objects.all())
     amount = forms.IntegerField()
     date_of_issue = forms.DateField()
+
+
+class LoginForm(forms.Form):
+    login = forms.CharField(max_length=64)
+    password = forms.CharField(widget=forms.PasswordInput)
