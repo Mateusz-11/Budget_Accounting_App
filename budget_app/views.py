@@ -33,6 +33,8 @@ class LogoutView(View):
         return redirect('home-view')
 
 class CategoryView(LoginRequiredMixin, View):
+    login_url = '/'
+    redirect_field_name = ''
     def get(self, request):
         cat = Category.objects.all()
         ctx = {
@@ -42,6 +44,8 @@ class CategoryView(LoginRequiredMixin, View):
 
 
 class ContractorsView(LoginRequiredMixin, View):
+    login_url = '/'
+    redirect_field_name = ''
     def get(self, request):
         form = AddContractorsForm
         contractors = Contractors.objects.all()
@@ -69,6 +73,8 @@ class ContractorsView(LoginRequiredMixin, View):
 
 
 class BudgetsView(LoginRequiredMixin, View):
+    login_url = '/'
+    redirect_field_name = ''
     def get(self, request):
         budget = Budget.objects.all()
         ctx = {
@@ -78,6 +84,8 @@ class BudgetsView(LoginRequiredMixin, View):
 
 
 class AddBudgetView(LoginRequiredMixin, View):
+    login_url = '/'
+    redirect_field_name = ''
     def get(self, request):
         form = AddBudgetForm
         ctx = {
@@ -92,6 +100,8 @@ class AddBudgetView(LoginRequiredMixin, View):
 
 
 class AddInvoiceView(LoginRequiredMixin, View):
+    login_url = '/'
+    redirect_field_name = ''
     def get(self, request):
         form = AddInvoiceForm
         ctx = {

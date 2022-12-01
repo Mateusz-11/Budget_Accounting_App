@@ -6,12 +6,19 @@
         <span>Miło, że nas odwiedzasz! Skorzystaj z naszej aplikacji, która pomoże Ci w regularnym rozliczaniu budżetu.</span>
     </div>
 
-    <div>
-        <h3>Login form:</h3>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}<br/>
-            <input type="submit" value="Login"/>
-        </form>
-    </div>
+    {% if not request.user.is_authenticated %}
+        <div>
+            <h3>Login form:</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}<br/>
+                <input type="submit" value="Login"/>
+            </form>
+        </div>
+    {% else %}
+
+    {% endif %}
+
+
+
 {% endblock %}
