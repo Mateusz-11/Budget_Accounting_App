@@ -1,21 +1,23 @@
 {% extends 'budget_app/base.html' %}
 
 {% block content %}
-    <div>
-        <h2>Lista wszystkich kategorii zamawianych usług:</h2>
-    </div>
-    <div>
-        <table class="table table-hover table-dark">
-            <thead>
+    <div class="container">
+        <div>
+            <h2>Lista wszystkich kategorii zamawianych usług:</h2>
+        </div>
+        <div>
+            <table class="table table-hover table-dark">
+                <thead>
                 <th scope="col">Category</th>
-            </thead>
-            <tbody>
-            {% for cat in categories %}
-                <tr>
-                    <td>{{ cat.category_name }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for cat in categories %}
+                    <tr>
+                        <td>{{ cat.category_name }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}

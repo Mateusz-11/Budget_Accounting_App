@@ -1,36 +1,38 @@
 {% extends 'budget_app/base.html' %}
 
 {% block content %}
-    <div>
-        <h2>Lista wszystkich kontrahentów:</h2>
-    </div>
-    <div>
-        <table class="table table-hover table-dark">
-            <thead>
+    <div class="container">
+        <div>
+            <h2>Lista wszystkich kontrahentów:</h2>
+        </div>
+        <div>
+            <table class="table table-hover table-dark">
+                <thead>
                 <th scope="col">Contractors</th>
                 <th scope="col">City</th>
                 <th scope="col">Zip Code</th>
                 <th scope="col">Street Address</th>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 {% for cont in contractors %}
-                <tr>
-                    <td>{{ cont.contractor_name }}</td>
-                    <td>{{ cont.city }}</td>
-                    <td>{{ cont.zip_code }}</td>
-                    <td>{{ cont.street_address }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ cont.contractor_name }}</td>
+                        <td>{{ cont.city }}</td>
+                        <td>{{ cont.zip_code }}</td>
+                        <td>{{ cont.street_address }}</td>
+                    </tr>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
 
-    <div>
-        <h3>Form to add contractors:</h3>
-       <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}<br/>
-            <input type="submit" value="Add Contractors"/>
-        </form>
+        <div>
+            <h3>Form to add contractors:</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}<br/>
+                <input type="submit" value="Add Contractors"/>
+            </form>
+        </div>
     </div>
 {% endblock %}

@@ -1,33 +1,35 @@
 {% extends 'budget_app/base.html' %}
 
 {% block content %}
-    <div>
-        <h2>Wybierz odpowiedni budżet i oglądaj jego szczegóły</h2>
-    </div>
-    <div>
+    <div class="container">
+        <div>
+            <h2>Wybierz odpowiedni budżet i oglądaj jego szczegóły</h2>
+        </div>
+        <div>
 
-    </div>
-    <div>
-        <table class="table table-hover table-dark">
-            <thead>
+        </div>
+        <div>
+            <table class="table table-hover table-dark">
+                <thead>
                 <th scope="col">Category</th>
                 <th scope="col">Plan</th>
                 <th scope="col">Execution</th>
                 <th scope="col">Difference</th>
                 <th scope="col">Degree of use</th>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 {% for b in budget %}
-                <tr>
-                    <td>#</td>
-                    <td>{{ b.plan }}</td>
-                    <td>{{ b.execution }}</td>
-                    <td>#</td>
-                    <td>#</td>
-                </tr>
+                    <tr>
+                        <td>#</td>
+                        <td>{{ b.plan }}</td>
+                        <td>{{ b.execution }}</td>
+                        <td>#</td>
+                        <td>#</td>
+                    </tr>
                 {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 {% endblock %}

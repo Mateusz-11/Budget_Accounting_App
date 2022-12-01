@@ -1,24 +1,26 @@
 {% extends 'budget_app/base.html' %}
 
 {% block content %}
-    <div>
-        <h1>O aplikacji</h1>
-        <span>Miło, że nas odwiedzasz! Skorzystaj z naszej aplikacji, która pomoże Ci w regularnym rozliczaniu budżetu.</span>
-    </div>
-
-    {% if not request.user.is_authenticated %}
+    <div class="container">
         <div>
-            <h3>Login form:</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}<br/>
-                <input type="submit" value="Login"/>
-            </form>
+            <h1>O aplikacji</h1>
+            <span>Miło, że nas odwiedzasz! Skorzystaj z naszej aplikacji, która pomoże Ci w regularnym rozliczaniu budżetu.</span>
         </div>
-    {% else %}
 
-    {% endif %}
+        {% if not request.user.is_authenticated %}
+            <div>
+                <h3>Login form:</h3>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}<br/>
+                    <input type="submit" value="Login"/>
+                </form>
+            </div>
+        {% else %}
+
+        {% endif %}
 
 
+    </div>
 
 {% endblock %}
