@@ -14,27 +14,34 @@
             style="background-color: {{ color }}"
         {% endif %}
 >
-{% if request.user.is_authenticated %}
-    <div>
-        <h2>Subpages:</h2>
-        <ul>
-            <li><a href='/'>Homepage</a> - Not Ready</li>
-            <li><a href='/budgets'>Budgets</a> - Not Ready</li>
-            <li><a href='/add-budget'>Add budget</a> - Not Ready</li>
-            <li><a href='/add-invoice'>Add invoice</a> - Not Ready</li>
-            <li><a href='/contractors'>Contractors</a></li>
-            <li><a href='/categories'>Categories</a></li>
-        </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            Logo2
+        </div>
+        {% if request.user.is_authenticated %}
+            <div class="col-sm-8">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link" href='/'>Homepage</a> - Not Ready</li>
+                <li class="nav-item"><a class="nav-link" href='/budgets'>Budgets</a> - Not Ready</li>
+                <li class="nav-item"><a class="nav-link" href='/add-budget'>Add budget</a> - Not Ready</li>
+                <li class="nav-item"><a class="nav-link" href='/add-invoice'>Add invoice</a> - Not Ready</li>
+                <li class="nav-item"><a class="nav-link" href='/contractors'>Contractors</a></li>
+                <li class="nav-item"><a class="nav-link" href='/categories'>Categories</a></li>
+            </ul>
+        {% else %}
+
+        {% endif %}
+        </div>
     </div>
+</div>
 
-{% else %}
-
-{% endif %}
 
 <div class="p-3 mb-2 bg-secondary text-white">
     {% if request.user.is_authenticated %}
         <span>
-            Logged: <strong>{{ request.user }}</strong>  </span> - <span> <a href="{% url 'logout' %}" class="link-light">Logout</a>
+            Logged: <strong>{{ request.user }}</strong>  </span> -
+        <span> <a href="{% url 'logout' %}" class="link-light">Logout</a>
         </span>
     {% else %}
         <p><a href="{% url 'home-view' %}" class="link-light">Login</a></p>

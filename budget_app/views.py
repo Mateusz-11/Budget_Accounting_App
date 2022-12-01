@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 
@@ -31,7 +32,7 @@ class LogoutView(View):
         # return render(request, 'budget_app/home_view.html', locals())
         return redirect('home-view')
 
-class CategoryView(View):
+class CategoryView(LoginRequiredMixin, View):
     def get(self, request):
         cat = Category.objects.all()
         ctx = {
@@ -40,7 +41,7 @@ class CategoryView(View):
         return render(request, 'budget_app/categories_view.html', ctx)
 
 
-class ContractorsView(View):
+class ContractorsView(LoginRequiredMixin, View):
     def get(self, request):
         form = AddContractorsForm
         contractors = Contractors.objects.all()
@@ -67,7 +68,7 @@ class ContractorsView(View):
         return render(request, 'budget_app/contractors_view.html', locals())
 
 
-class BudgetsView(View):
+class BudgetsView(LoginRequiredMixin, View):
     def get(self, request):
         budget = Budget.objects.all()
         ctx = {
@@ -76,7 +77,7 @@ class BudgetsView(View):
         return render(request, 'budget_app/budget_view.html', ctx)
 
 
-class AddBudgetView(View):
+class AddBudgetView(LoginRequiredMixin, View):
     def get(self, request):
         form = AddBudgetForm
         ctx = {
@@ -90,7 +91,7 @@ class AddBudgetView(View):
             pass
 
 
-class AddInvoiceView(View):
+class AddInvoiceView(LoginRequiredMixin, View):
     def get(self, request):
         form = AddInvoiceForm
         ctx = {
