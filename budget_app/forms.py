@@ -15,7 +15,6 @@ CATEGORY = (
     (4, "Photography Services"),
     (5, "Content Marketing"),
     (6, "Graphic Services"),
-    (7, "Movie Services"),
 )
 
 class AddBudgetForm(forms.Form):
