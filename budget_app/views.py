@@ -34,7 +34,7 @@ class LogoutView(View):
 
 class CategoryView(LoginRequiredMixin, View):
     login_url = '/'
-    redirect_field_name = ''
+    # redirect_field_name = ''
     def get(self, request):
         cat = Category.objects.all()
         ctx = {

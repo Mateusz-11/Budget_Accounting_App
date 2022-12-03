@@ -22,7 +22,7 @@ class Category(models.Model):
 
 
 class Invoice(models.Model):
-    nr_invoice = models.CharField(max_length=64)
+    id_invoice = models.CharField(max_length=64)
     date_of_issue = models.DateField(null=True)
     id_contractor = models.ForeignKey(Contractors, on_delete=models.CASCADE)
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -30,21 +30,23 @@ class Invoice(models.Model):
 
 class Service(models.Model):
     id_service = models.BigAutoField(primary_key=True)
-    service_name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64)
     amount = models.IntegerField()  # wartosc netto
-    nr_invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    id_invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
     id_category = models.ManyToManyField(Category)
 
 
 class PartialBudget(models.Model):
-    category_name = models.CharField(max_length=32)
+    name = models.CharField(max_length=32)
+    id_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    id_budget = models.ForeignKey("Budget", on_delete=models.CASCADE)
     plan_amount_category = models.IntegerField()
     execution_amount_category = models.IntegerField()
 
 
 class Budget(models.Model):
     id_budget = models.BigAutoField(primary_key=True)
-    budget_name = models.IntegerField(default=2000)
+    name = models.IntegerField(default=2000)
     plan = models.IntegerField(default=0)
     execution = models.IntegerField(default=0)
     id_category = models.ManyToManyField(Category)
