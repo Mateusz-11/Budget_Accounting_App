@@ -3,8 +3,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 
-from budget_app.forms import AddContractorsForm, AddBudgetForm, AddInvoiceForm, LoginForm
-from budget_app.models import Category, Contractors, Budget
+from budget_app.forms import AddContractorsForm, AddBudgetForm, AddInvoiceForm, LoginForm, ChooseInvoicesForm
+from budget_app.models import Category, Contractors, Budget, Invoice
 
 
 # Create your views here.
@@ -107,3 +107,23 @@ class AddInvoiceView(LoginRequiredMixin, View):
             pass
 
 
+class InvoicesView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = ChooseInvoicesForm
+        invoices = Invoice.objects.all()
+        ctx = {
+            'form': form,
+            'invoices': invoices,
+        }
+        return render(request, 'budget_app/invoices_view.html', ctx)
+
+    def post(self, request):
+        form = ChooseInvoicesForm(request.POST)
+        if form.is_valid():
+            cat = form.cleaned_data.get('id_category')
+            invoices = Invoice.objects.filter(category_name=cat)
+            ctx = {
+                'invoices': invoices,
+            }
+            return render(request, 'budget_app/invoices_view.html', locals())
+        return render(request, 'budget_app/invoices_view.html', locals())

@@ -36,3 +36,6 @@ class AddInvoiceForm(forms.Form):
 class LoginForm(forms.Form):
     login = forms.CharField(max_length=64)
     password = forms.CharField(widget=forms.PasswordInput)
+
+class ChooseInvoicesForm(forms.Form):
+    id_category = forms.ModelChoiceField(queryset=Category.objects.all())

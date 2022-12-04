@@ -1,0 +1,39 @@
+{% extends 'budget_app/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div>
+            <h2>Wybierz odpowiedni budżet i oglądaj jego faktury</h2>
+        </div>
+        <div>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}<br/>
+                <input type="submit" value="Search"/>
+            </form>
+        </div>
+        <div>
+            <table class="table table-hover table-dark">
+                <thead>
+                <th scope="col">Name</th>
+                <th scope="col">Contractor</th>
+                <th scope="col">Category</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date of Issue</th>
+                </thead>
+                <tbody>
+                {% for i in invoices %}
+                    <tr>
+                        <td>#</td>
+                        <td>{{ i.id_contractor  }}</td>
+                        <td>{{ i.category_name }}</td>
+                        <td>#</td>
+                        <td>{{ i.date_of_issue }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
