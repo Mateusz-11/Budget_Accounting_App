@@ -25,11 +25,9 @@ class AddBudgetForm(forms.Form):
 
 
 class AddInvoiceForm(forms.Form):
-    # budget = forms.ModelChoiceField(queryset=Budget.objects.all())
-    service_name = forms.CharField(max_length=64)
-    contractor_name = forms.ModelChoiceField(queryset=Contractors.objects.all())
-    id_category = forms.ModelChoiceField(queryset=Category.objects.all())
-    amount = forms.IntegerField()
+    id_invoice = forms.CharField(max_length=64)
+    contractor = forms.ModelChoiceField(queryset=Contractors.objects.all())
+    category = forms.ModelChoiceField(queryset=Category.objects.all())
     date_of_issue = forms.DateField()
 
 

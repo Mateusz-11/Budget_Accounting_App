@@ -102,9 +102,20 @@ class AddInvoiceView(LoginRequiredMixin, View):
         return render(request, 'budget_app/addinvoice_view.html', ctx)
 
     def post(self, request):
-        form = AddBudgetForm(request.POST)
+        form = AddInvoiceForm(request.POST)
         if form.is_valid():
-            pass
+            i = Invoice()
+            id_invoice = form.cleaned_data.get('id_invoice')
+            id_contractor = form.cleaned_data.get('contractor')
+            category_name = form.cleaned_data.get('category')
+            date_of_issue = form.cleaned_data.get('date_of_issue')
+            i.id_invoice = id_invoice
+            i.id_contractor = id_contractor
+            i.category_name = category_name
+            i.date_of_issue = date_of_issue
+            i.save()
+            return redirect('invoices-view')
+        return render(request, 'budget_app/addinvoice_view.html', locals())
 
 
 class InvoicesView(LoginRequiredMixin, View):
@@ -127,3 +138,4 @@ class InvoicesView(LoginRequiredMixin, View):
             }
             return render(request, 'budget_app/invoices_view.html', locals())
         return render(request, 'budget_app/invoices_view.html', locals())
+
