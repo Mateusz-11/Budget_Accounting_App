@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
         <div>
-            <h2>Wybierz odpowiedni budżet i oglądaj jego faktury</h2>
+            <h2>Wybierz odpowiednią kategorie i zobacz szczegóły fragmentu budżetu</h2>
         </div>
         <div>
             <form action="" method="post">
@@ -12,26 +12,23 @@
                 <input type="submit" value="Search"/>
             </form>
         </div>
-    <div>
-        {{ suma }}
-    </div>
         <div>
             <table class="table table-hover table-dark">
                 <thead>
                 <th scope="col">Name</th>
-                <th scope="col">Contractor</th>
                 <th scope="col">Category</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Date of Issue</th>
+                <th scope="col">Budget</th>
+                <th scope="col">Plan Amount</th>
+                <th scope="col">Execution Amount</th>
                 </thead>
                 <tbody>
-                {% for i in invoices %}
+                {% for pb in partialbudget %}
                     <tr>
+                        <td>{{ pb.name}}</td>
+                        <td>{{ pb.id_category  }}</td>
                         <td>#</td>
-                        <td>{{ i.id_contractor  }}</td>
-                        <td>{{ i.category_name }}</td>
-                        <td>#</td>
-                        <td>{{ i.date_of_issue }}</td>
+                        <td>{{ pb.plan_amount_category }}</td>
+                        <td>{{ pb.execution_amount_category }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

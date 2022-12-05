@@ -25,8 +25,12 @@ class Invoice(models.Model):
     id_invoice = models.CharField(max_length=64)
     date_of_issue = models.DateField(null=True)
     id_contractor = models.ForeignKey(Contractors, on_delete=models.CASCADE)
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
+    # category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
+    partial_budget = models.ForeignKey("PartialBudget", on_delete=models.CASCADE)
 
+
+    def __str__(self):
+        return self.id_invoice
 
 class Service(models.Model):
     id_service = models.BigAutoField(primary_key=True)
@@ -34,6 +38,7 @@ class Service(models.Model):
     amount = models.IntegerField()  # wartosc netto
     id_invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
     id_category = models.ManyToManyField(Category)
+
 
 
 class PartialBudget(models.Model):

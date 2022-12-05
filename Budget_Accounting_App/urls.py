@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from budget_app.views import HomeView, LogoutView, CategoryView, ContractorsView, BudgetsView, AddBudgetView, AddInvoiceView, InvoicesView
+from budget_app.views import HomeView, LogoutView, CategoryView, ContractorsView, BudgetsView, AddBudgetView, \
+    AddInvoiceView, InvoicesView, PartialBudgetView, CreateServiceView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +29,7 @@ urlpatterns = [
     path('add-budget/', AddBudgetView.as_view(), name="addbudget-view"),
     path('add-invoice/', AddInvoiceView.as_view(), name="addinvoice-view"),
     path('invoices/', InvoicesView.as_view(), name="invoices-view"),
+    path('partialbudget/', PartialBudgetView.as_view(), name="partialbudget-view"),
+    path('createservice/', CreateServiceView.as_view(), name="createservice-view"),
 
 ]

@@ -37,3 +37,6 @@ class LoginForm(forms.Form):
 
 class ChooseInvoicesForm(forms.Form):
     id_category = forms.ModelChoiceField(queryset=Category.objects.all())
+
+class ChoosePartialBudgetForm(forms.Form):
+    id_category = forms.ModelChoiceField(queryset=Category.objects.all())
