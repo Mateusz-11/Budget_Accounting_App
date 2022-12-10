@@ -6,4 +6,9 @@ def test_form_user(client):
 
 
 @pytest.mark.django_db
-def test_product_add():
+def test_invoice_add():
+
+
+
+@pytest.mark.django_db
+def test_service_add():
