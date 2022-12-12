@@ -27,7 +27,7 @@ class Invoice(models.Model):
     date_of_issue = models.DateField(null=True)
     id_contractor = models.ForeignKey(Contractors, on_delete=models.CASCADE)
     # category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
-    partial_budget = models.ForeignKey("PartialBudget", on_delete=models.CASCADE)
+    partial_budget = models.ForeignKey("PartialBudget", on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.id_invoice

@@ -1,6 +1,9 @@
 import pytest
-
+from django.contrib.auth.models import User
+from django.test import Client
 
 @pytest.fixture
-def login():
-    pass
+def client():
+    client = Client()
+    return client
+
