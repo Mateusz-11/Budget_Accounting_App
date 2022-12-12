@@ -144,7 +144,7 @@ class InvoicesView(LoginRequiredMixin, View):
             return render(request, 'budget_app/invoices_view.html', locals())
         return render(request, 'budget_app/invoices_view.html', locals())
 
-class PartialBudgetView(View):
+class PartialBudgetView(LoginRequiredMixin, View):
     def get(self, request):
         form = ChoosePartialBudgetForm
         partialbudget = PartialBudget.objects.all()
