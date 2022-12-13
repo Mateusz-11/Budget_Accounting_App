@@ -31,5 +31,4 @@ urlpatterns = [
     path('invoices/', InvoicesView.as_view(), name="invoices-view"),
     path('partialbudget/', PartialBudgetView.as_view(), name="partialbudget-view"),
     path('createservice/', CreateServiceView.as_view(), name="createservice-view"),
-
 ]
