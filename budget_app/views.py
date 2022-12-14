@@ -110,12 +110,13 @@ class AddInvoiceView(LoginRequiredMixin, View):
         if form.is_valid():
             i = Invoice()
             id_invoice = form.cleaned_data.get('id_invoice')
-            id_contractor = form.cleaned_data.get('contractor')
-            category_name = form.cleaned_data.get('category')
+            contractor = form.cleaned_data.get('contractor')
+            # category = form.cleaned_data.get('category')
             date_of_issue = form.cleaned_data.get('date_of_issue')
+            partial_budget = form.cleaned_data.get('partial_budget')
             i.id_invoice = id_invoice
-            i.id_contractor = id_contractor
-            i.category_name = category_name
+            i.id_contractor = contractor
+            # i.category = category
             i.date_of_issue = date_of_issue
             i.save()
             return redirect('invoices-view')

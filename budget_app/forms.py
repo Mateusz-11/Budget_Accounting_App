@@ -1,6 +1,6 @@
 from django import forms
 
-from budget_app.models import Category, Budget, Contractors
+from budget_app.models import Category, Budget, Contractors, PartialBudget
 
 
 class AddContractorsForm(forms.Form):
@@ -27,8 +27,10 @@ class AddBudgetForm(forms.Form):
 class AddInvoiceForm(forms.Form):
     id_invoice = forms.CharField(max_length=64)
     contractor = forms.ModelChoiceField(queryset=Contractors.objects.all())
-    category = forms.ModelChoiceField(queryset=Category.objects.all())
-    date_of_issue = forms.DateField()
+    # category = forms.ModelChoiceField(queryset=Category.objects.all())
+    date_of_issue = forms.DateField(widget=forms.SelectDateWidget)
+    # date_of_issue = forms.DateField()
+    partial_budget = forms.ModelChoiceField(queryset=PartialBudget.objects.all())
 
 
 class LoginForm(forms.Form):

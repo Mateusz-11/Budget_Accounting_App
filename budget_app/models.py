@@ -25,8 +25,8 @@ class Category(models.Model):
 class Invoice(models.Model):
     id_invoice = models.CharField(max_length=64)
     date_of_issue = models.DateField(null=True)
+    sum_amount = models.IntegerField(default=0)
     id_contractor = models.ForeignKey(Contractors, on_delete=models.CASCADE)
-    # category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
     partial_budget = models.ForeignKey("PartialBudget", on_delete=models.CASCADE, null=True)
 
     def __str__(self):
