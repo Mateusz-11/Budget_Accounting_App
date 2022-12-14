@@ -1,1 +1,1 @@
-Budget_Accounting_App
+Budget Accounting App
