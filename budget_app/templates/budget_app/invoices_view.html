@@ -27,10 +27,10 @@
                 <tbody>
                 {% for i in invoices %}
                     <tr>
-                        <td>#</td>
+                        <td>{{ i.id_invoice  }}</td>
                         <td>{{ i.id_contractor  }}</td>
-                        <td>{{ i.category_name }}</td>
-                        <td>#</td>
+                        <td>{{ i.partial_budget }}</td>
+                        <td>{{ i.sum_amount }}</td>
                         <td>{{ i.date_of_issue }}</td>
                     </tr>
                 {% endfor %}

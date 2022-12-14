@@ -9,19 +9,16 @@ class AddContractorsForm(forms.Form):
     zip_code = forms.CharField(max_length=12)
     street_address = forms.CharField(max_length=64)
 
-CATEGORY = (
-    (1, "Paid advertising"),
-    (3, "Search Engine Optimization"),
-    (4, "Photography Services"),
-    (5, "Content Marketing"),
-    (6, "Graphic Services"),
-)
 
 class AddBudgetForm(forms.Form):
     budget_name = forms.IntegerField()
-    plan = forms.IntegerField()
+
+
+class AddPartialBudgetForm(forms.Form):
+    name = forms.CharField(max_length=32)
     id_category = forms.ModelChoiceField(queryset=Category.objects.all())
-    # id_category = forms.ChoiceField(choices=CATEGORY)  # old version
+    id_budget = forms.ModelChoiceField(queryset=Budget.objects.all())
+    plan_amount = forms.IntegerField()
 
 
 class AddInvoiceForm(forms.Form):

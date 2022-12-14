@@ -1,0 +1,18 @@
+{% extends 'budget_app/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div>
+            <h3>Dodajesz PartialBudget.</h3>
+        </div>
+
+        <div>
+            <h3>Form to create PartialBudget:</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}<br/>
+                <input type="submit" value="Add PartialBudget"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

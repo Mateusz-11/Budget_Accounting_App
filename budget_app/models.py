@@ -45,8 +45,11 @@ class PartialBudget(models.Model):
     name = models.CharField(max_length=32)
     id_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     id_budget = models.ForeignKey("Budget", on_delete=models.CASCADE)
-    plan_amount_category = models.IntegerField()
-    execution_amount = models.IntegerField()
+    plan_amount = models.IntegerField()
+    execution_amount = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
 
 
 class Budget(models.Model):
@@ -58,4 +61,4 @@ class Budget(models.Model):
     categories_budget = models.ManyToManyField(PartialBudget)
 
     def __str__(self):
-        return str(self.budget_name)
+        return str(self.name)

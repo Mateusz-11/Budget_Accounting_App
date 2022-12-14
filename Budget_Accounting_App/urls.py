@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from budget_app.views import HomeView, LogoutView, CategoryView, ContractorsView, BudgetsView, AddBudgetView, \
-    AddInvoiceView, InvoicesView, PartialBudgetView, CreateServiceView
+    AddInvoiceView, InvoicesView, PartialBudgetView, CreateServiceView, AddPartialBudgetView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +30,6 @@ urlpatterns = [
     path('add-invoice/', AddInvoiceView.as_view(), name="addinvoice-view"),
     path('invoices/', InvoicesView.as_view(), name="invoices-view"),
     path('partialbudget/', PartialBudgetView.as_view(), name="partialbudget-view"),
+    path('add-partialbudget/', AddPartialBudgetView.as_view(), name="addpartialbudget-view"),
     path('createservice/', CreateServiceView.as_view(), name="createservice-view"),
 ]

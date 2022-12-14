@@ -7,7 +7,7 @@ from django.views import View
 from django.views.generic.edit import CreateView
 
 from budget_app.forms import AddContractorsForm, AddBudgetForm, AddInvoiceForm, LoginForm, ChooseInvoicesForm, \
-    ChoosePartialBudgetForm
+    ChoosePartialBudgetForm, AddPartialBudgetForm
 from budget_app.models import Category, Contractors, Budget, Invoice, PartialBudget, Service
 
 
@@ -165,6 +165,31 @@ class PartialBudgetView(LoginRequiredMixin, View):
             }
             return render(request, 'budget_app/partialbudget_view.html', locals())
         return render(request, 'budget_app/partialbudget_view.html', locals())
+
+
+class AddPartialBudgetView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = AddPartialBudgetForm
+        ctx = {
+            'form': form,
+        }
+        return render(request, 'budget_app/addpartialbudget_view.html', ctx)
+
+    def post(self, request):
+        form = AddPartialBudgetForm(request.POST)
+        if form.is_valid():
+            p = PartialBudget()
+            name = form.cleaned_data.get('name')
+            plan_amount = form.cleaned_data.get('plan_amount')
+            id_budget = form.cleaned_data.get('id_budget')
+            id_category = form.cleaned_data.get('id_category')
+            p.name = name
+            p.plan_amount = plan_amount
+            p.id_budget = id_budget
+            p.id_category = id_category
+            p.save()
+            return redirect('partialbudget-view')
+        return render(request, 'budget_app/addpartialbudget_view.html', locals())
 
 
 class CreateServiceView(CreateView):
