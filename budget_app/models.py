@@ -46,7 +46,7 @@ class PartialBudget(models.Model):
     id_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     id_budget = models.ForeignKey("Budget", on_delete=models.CASCADE)
     plan_amount_category = models.IntegerField()
-    execution_amount_category = models.IntegerField()
+    execution_amount = models.IntegerField()
 
 
 class Budget(models.Model):
