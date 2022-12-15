@@ -13,6 +13,9 @@ from budget_app.models import Category, Contractors, Budget, Invoice, PartialBud
 
 # Create your views here.
 class HomeView(View):
+    """
+    It's main view of application. On it, User can log in to app.
+    """
     def get(self, request):
         form = LoginForm()
         return render(request, 'budget_app/home_view.html', locals())
@@ -31,12 +34,18 @@ class HomeView(View):
 
 
 class LogoutView(View):
+    """
+    It's view used to logout Users.
+    """
     def get(self, request):
         logout(request)
         # return render(request, 'budget_app/home_view.html', locals())
         return redirect('home-view')
 
 class CategoryView(LoginRequiredMixin, View):
+    """
+    It's view with table of all Categoris.
+    """
     def get(self, request):
         cat = Category.objects.all()
         ctx = {
@@ -46,6 +55,9 @@ class CategoryView(LoginRequiredMixin, View):
 
 
 class ContractorsView(LoginRequiredMixin, View):
+    """
+    It's view with form to add Contractors and table with all Contractors.
+    """
     def get(self, request):
         form = AddContractorsForm
         contractors = Contractors.objects.all()
@@ -73,6 +85,9 @@ class ContractorsView(LoginRequiredMixin, View):
 
 
 class BudgetsView(LoginRequiredMixin, View):
+    """
+    It's view with all created Budgets.
+    """
     # login_url = '/'
     # redirect_field_name = ''
     def get(self, request):
@@ -84,6 +99,9 @@ class BudgetsView(LoginRequiredMixin, View):
 
 
 class AddBudgetView(LoginRequiredMixin, View):
+    """
+    It's view with form to add budget.
+    """
     def get(self, request):
         form = AddBudgetForm
         ctx = {
@@ -103,6 +121,9 @@ class AddBudgetView(LoginRequiredMixin, View):
 
 
 class AddInvoiceView(LoginRequiredMixin, View):
+    """
+    It's view with form to add invoice.
+    """
     def get(self, request):
         form = AddInvoiceForm
         ctx = {
@@ -128,6 +149,9 @@ class AddInvoiceView(LoginRequiredMixin, View):
 
 
 class InvoicesView(LoginRequiredMixin, View):
+    """
+    It's view with all invoices.
+    """
     def get(self, request):
         form = ChooseInvoicesForm
         invoices = Invoice.objects.all()
@@ -150,6 +174,9 @@ class InvoicesView(LoginRequiredMixin, View):
         return render(request, 'budget_app/invoices_view.html', locals())
 
 class PartialBudgetView(LoginRequiredMixin, View):
+    """
+    It's view with all Partial Budget.
+    """
     def get(self, request):
         form = ChoosePartialBudgetForm
         partialbudget = PartialBudget.objects.all()
@@ -172,6 +199,9 @@ class PartialBudgetView(LoginRequiredMixin, View):
 
 
 class AddPartialBudgetView(LoginRequiredMixin, View):
+    """
+    It's view with form to add a Partial Budgets.
+    """
     def get(self, request):
         form = AddPartialBudgetForm
         ctx = {
@@ -204,6 +234,9 @@ class AddPartialBudgetView(LoginRequiredMixin, View):
 #         return reverse('createservice-view')
 
 class CreateServiceView(CreateView):
+    """
+    It's view with form to create service.
+    """
     def get(self, request):
         form = AddServiceForm
         ctx = {
