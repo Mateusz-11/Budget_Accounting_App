@@ -94,7 +94,12 @@ class AddBudgetView(LoginRequiredMixin, View):
     def post(self, request):
         form = AddBudgetForm(request.POST)
         if form.is_valid():
-            pass
+            b = Budget()
+            name = form.cleaned_data.get('budget_name')
+            b.name = name
+            b.save()
+            return redirect('budgets-view')
+        return render(request, 'budget_app/addbudget_view.html', locals())
 
 
 class AddInvoiceView(LoginRequiredMixin, View):
@@ -157,8 +162,8 @@ class PartialBudgetView(LoginRequiredMixin, View):
     def post(self, request):
         form = ChoosePartialBudgetForm(request.POST)
         if form.is_valid():
-            cat = form.cleaned_data.get('id_category')
-            partialbudget = PartialBudget.objects.filter(id_category=cat)
+            budget = form.cleaned_data.get('id_budget')
+            partialbudget = PartialBudget.objects.filter(id_budget=budget)
             ctx = {
                 'partialbudget': partialbudget,
             }
@@ -181,11 +186,12 @@ class AddPartialBudgetView(LoginRequiredMixin, View):
             name = form.cleaned_data.get('name')
             plan_amount = form.cleaned_data.get('plan_amount')
             id_budget = form.cleaned_data.get('id_budget')
-            id_category = form.cleaned_data.get('id_category')
+            cat = form.cleaned_data.get('id_category')
+            category = Category.objects.filter(id_category=cat)
             p.name = name
             p.plan_amount = plan_amount
             p.id_budget = id_budget
-            p.id_category = id_category
+            p.id_category.set(category)
             p.save()
             return redirect('partialbudget-view')
         return render(request, 'budget_app/addpartialbudget_view.html', locals())

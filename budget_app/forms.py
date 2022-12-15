@@ -45,4 +45,4 @@ class ChooseInvoicesForm(forms.Form):
     partial_budget = forms.ModelChoiceField(queryset=PartialBudget.objects.all())
 
 class ChoosePartialBudgetForm(forms.Form):
-    id_category = forms.ModelChoiceField(queryset=Category.objects.all())
+    id_budget = forms.ModelChoiceField(queryset=Budget.objects.all())
