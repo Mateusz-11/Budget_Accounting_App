@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -154,7 +155,11 @@ class InvoicesView(LoginRequiredMixin, View):
     """
     def get(self, request):
         form = ChooseInvoicesForm
-        invoices = Invoice.objects.all()
+        invoices1 = Invoice.objects.all()
+        paginator = Paginator(invoices1, 3)  # Show 3 contacts per page.
+
+        page_number = request.GET.get('page')
+        invoices = paginator.get_page(page_number)
         ctx = {
             'form': form,
             'invoices': invoices,
