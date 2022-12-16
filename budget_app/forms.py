@@ -41,8 +41,10 @@ class LoginForm(forms.Form):
     login = forms.CharField(max_length=64)
     password = forms.CharField(widget=forms.PasswordInput)
 
+
 class ChooseInvoicesForm(forms.Form):
     partial_budget = forms.ModelChoiceField(queryset=PartialBudget.objects.all())
+
 
 class ChoosePartialBudgetForm(forms.Form):
     id_budget = forms.ModelChoiceField(queryset=Budget.objects.all())

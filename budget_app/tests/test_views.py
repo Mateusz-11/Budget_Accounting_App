@@ -1,24 +1,26 @@
 import pytest
 from django.urls import reverse
 
-from budget_app.models import Contractors
-
 
 def test_home_view(client):
     response = client.get('')
     assert response.status_code == 200
 
+
 def test_categories_view(client):
     response = client.get('/categories/')
     assert response.status_code == 302
+
 
 def test_budgets_view(client):
     response = client.get('/budgets/')
     assert response.status_code == 302
 
+
 def test_partialbudget_view(client):
     response = client.get('/partialbudget/')
     assert response.status_code == 302
+
 
 def test_logout_view(client):
     response = client.get('/logout/')
@@ -59,5 +61,3 @@ def test_with_authenticated_client_partialbudget_view(client, django_user_model)
     # client.login(username=username, password=password)
     response = client.get('/partialbudget/')
     assert response.status_code == 200
-
-

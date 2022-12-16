@@ -34,4 +34,3 @@ urlpatterns = [
     path('add-partialbudget/', AddPartialBudgetView.as_view(), name="addpartialbudget-view"),
     path('createservice/', CreateServiceView.as_view(), name="createservice-view"),
 ]
-

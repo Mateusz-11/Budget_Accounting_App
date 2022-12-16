@@ -11,7 +11,6 @@ from budget_app.forms import AddContractorsForm, AddBudgetForm, AddInvoiceForm, 
 from budget_app.models import Category, Contractors, Budget, Invoice, PartialBudget, Service
 
 
-# Create your views here.
 class HomeView(View):
     """
     It's main view of application. On it, User can log in to app.
@@ -41,6 +40,7 @@ class LogoutView(View):
         logout(request)
         # return render(request, 'budget_app/home_view.html', locals())
         return redirect('home-view')
+
 
 class CategoryView(LoginRequiredMixin, View):
     """
@@ -158,7 +158,7 @@ class InvoicesView(LoginRequiredMixin, View):
         ctx = {
             'form': form,
             'invoices': invoices,
-            'suma' : invoices[0].service_set.all().aggregate(Sum("amount")),
+            'suma': invoices[0].service_set.all().aggregate(Sum("amount")),
         }
         return render(request, 'budget_app/invoices_view.html', ctx)
 
@@ -172,6 +172,7 @@ class InvoicesView(LoginRequiredMixin, View):
             }
             return render(request, 'budget_app/invoices_view.html', locals())
         return render(request, 'budget_app/invoices_view.html', locals())
+
 
 class PartialBudgetView(LoginRequiredMixin, View):
     """
@@ -227,39 +228,39 @@ class AddPartialBudgetView(LoginRequiredMixin, View):
         return render(request, 'budget_app/addpartialbudget_view.html', locals())
 
 
-# class CreateServiceView(CreateView):
-#     model = Service
-#     fields = ["name", "amount", "id_invoice", "id_category"]
-#     def get_success_url(self):
-#         return reverse('createservice-view')
-
 class CreateServiceView(CreateView):
-    """
-    It's view with form to create service.
-    """
-    def get(self, request):
-        form = AddServiceForm
-        ctx = {
-            'form': form,
-        }
-        return render(request, 'budget_app/service_form.html', ctx)
+    model = Service
+    fields = ["name", "amount", "id_invoice", "id_category"]
 
-    def post(self, request):
-        form = AddServiceForm(request.POST)
-        if form.is_valid():
-            p = Service()
-            name = form.cleaned_data.get('name')
-            amount = form.cleaned_data.get('amount')
-            id_invoice = form.cleaned_data.get('id_invoice')
-            id_category = form.cleaned_data.get('id_category')
-            p.name = name
-            p.amount = amount
-            p.id_invoice = id_invoice
-            p.id_category = id_category
-            p.save()
+    def get_success_url(self):
+        return reverse('createservice-view')
 
-
-            return redirect('createservice-view')
-        return render(request, 'budget_app/service_form.html', locals())
-
-
+#
+# class CreateServiceView(CreateView):
+#     """
+#     It's view with form to create service.
+#     """
+#     def get(self, request):
+#         form = AddServiceForm
+#         ctx = {
+#             'form': form,
+#         }
+#         return render(request, 'budget_app/service_form.html', ctx)
+#
+#     def post(self, request):
+#         form = AddServiceForm(request.POST)
+#         if form.is_valid():
+#             p = Service()
+#             name = form.cleaned_data.get('name')
+#             amount = form.cleaned_data.get('amount')
+#             id_invoice = form.cleaned_data.get('id_invoice')
+#             id_category = form.cleaned_data.get('id_category')
+#             p.name = name
+#             p.amount = amount
+#             p.id_invoice = id_invoice
+#             p.id_category = id_category
+#             p.save()
+#
+#
+#             return redirect('createservice-view')
+#         return render(request, 'budget_app/service_form.html', locals())

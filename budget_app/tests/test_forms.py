@@ -26,6 +26,7 @@ def test_with_authenticated_client_add_contractor(client, django_user_model):
     assert Contractors.objects.count() == 1
     # assert len(Contractors.objects.all()) == 1
 
+
 @pytest.mark.django_db
 def test_with_authenticated_client_add_contractor_v2(client, django_user_model):
     username = "user1"
