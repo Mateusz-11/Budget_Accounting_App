@@ -76,6 +76,8 @@ To run tests, run the following command
 
 - Add mobile view
 
+- Add validators to forms
+
 
 
 ## Lessons Learned
