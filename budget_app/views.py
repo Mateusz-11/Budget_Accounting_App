@@ -186,9 +186,11 @@ class PartialBudgetView(LoginRequiredMixin, View):
     def get(self, request):
         form = ChoosePartialBudgetForm
         partialbudget = PartialBudget.objects.all()
+        pb_sums = [p.invoice_set.aggregate(Sum("sum_amount")) for p in partialbudget]
         ctx = {
             'form': form,
             'partialbudget': partialbudget,
+            'pb_sums': pb_sums,
         }
         return render(request, 'budget_app/partialbudget_view.html', ctx)
 
@@ -223,11 +225,11 @@ class AddPartialBudgetView(LoginRequiredMixin, View):
             plan_amount = form.cleaned_data.get('plan_amount')
             id_budget = form.cleaned_data.get('id_budget')
             cat = form.cleaned_data.get('id_category')
-            category = Category.objects.filter(id_category=cat)
+            # category = Category.objects.get(id_category=cat)
             p.name = name
             p.plan_amount = plan_amount
             p.id_budget = id_budget
-            p.id_category.set(category)
+            p.id_category = cat
             p.save()
             return redirect('partialbudget-view')
         return render(request, 'budget_app/addpartialbudget_view.html', locals())

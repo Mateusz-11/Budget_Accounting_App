@@ -12,9 +12,9 @@
                 <input type="submit" value="Search"/>
             </form>
         </div>
-    <div>
-        {{ suma }}
-    </div>
+        <div>
+            {{ suma }}
+        </div>
         <div>
             <table class="table table-hover table-dark">
                 <thead>
@@ -27,8 +27,8 @@
                 <tbody>
                 {% for i in invoices %}
                     <tr>
-                        <td>{{ i.id_invoice  }}</td>
-                        <td>{{ i.id_contractor  }}</td>
+                        <td>{{ i.id_invoice }}</td>
+                        <td>{{ i.id_contractor }}</td>
                         <td>{{ i.partial_budget }}</td>
                         <td>{{ i.sum_amount }}</td>
                         <td>{{ i.date_of_issue }}</td>
@@ -37,23 +37,26 @@
                 </tbody>
             </table>
         </div>
-    <div class="pagination">
+    {% if invoices.has_other_pages %}
+        <div class="pagination">
     <span class="step-links">
         {% if invoices.has_previous %}
-{#            <a href="?page=1">&laquo; first</a>#}
+            {#            <a href="?page=1">&laquo; first</a>#}
             <a href="?page={{ invoices.previous_page_number }}">previous</a>
         {% endif %}
 
-        <span class="current">
+            <span class="current">
             Page {{ invoices.number }} of {{ invoices.paginator.num_pages }}.
-        </span>
+            </span>
+
 
         {% if invoices.has_next %}
             <a href="?page={{ invoices.next_page_number }}">next</a>
-{#            <a href="?page={{ invoices.paginator.num_pages }}">last &raquo;</a>#}
+            {#            <a href="?page={{ invoices.paginator.num_pages }}">last &raquo;</a>#}
         {% endif %}
     </span>
-</div>
+        </div>
+            {% endif %}
     </div>
 
 {% endblock %}
