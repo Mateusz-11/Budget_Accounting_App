@@ -11,21 +11,22 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-                <img src="{% static '/baa-logo.jpg' %}" alt="BAA logo">
+            <img src="{% static '/baa-logo.jpg' %}" alt="BAA logo">
         </div>
         {% if request.user.is_authenticated %}
 
             <div class="col-sm-8">
                 <ul class="nav nav-tabs">
                     <li class="nav-item"><a class="nav-link" href='/'>Homepage</a></li>
-                    <li class="nav-item"><a class="nav-link" href='/budgets'>Budgets</a></li>
                     <li class="nav-item"><a class="nav-link" href='/add-budget'>Add budget</a></li>
-                    <li class="nav-item"><a class="nav-link" href='/partialbudget'>PartialBudget</a></li>
+                    <li class="nav-item"><a class="nav-link" href='/budgets'>Budgets</a></li>
                     <li class="nav-item"><a class="nav-link" href='/add-partialbudget'>Add PartialBudget</a></li>
-                    <li class="nav-item"><a class="nav-link" href='/invoices'>Invoices</a></li>
-                    <li class="nav-item"><a class="nav-link" href='/add-invoice'>Add invoice</a></li>
-                    <li class="nav-item"><a class="nav-link" href='/createservice'>Add Service</a></li>
+                    <li class="nav-item"><a class="nav-link" href='/partialbudget'>PartialBudget</a></li>
                     <li class="nav-item"><a class="nav-link" href='/contractors'>Contractors</a></li>
+                    <li class="nav-item"><a class="nav-link" href='/add-invoice'>Add invoice</a></li>
+                    <li class="nav-item"><a class="nav-link" href='/invoices'>Invoices</a></li>
+                    <li class="nav-item"><a class="nav-link" href='/createservice'>Add Service</a></li>
+                    <li class="nav-item"><a class="nav-link" href='#'>Services - to be added</a></li>
                     <li class="nav-item"><a class="nav-link" href='/categories'>Categories</a></li>
                 </ul>
             </div>
@@ -35,7 +36,6 @@
 
     </div>
 </div>
-
 
 
 <div class="p-3 mb-2 bg-secondary text-white">
