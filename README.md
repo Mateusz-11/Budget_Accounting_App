@@ -78,6 +78,8 @@ To run tests, run the following command
 
 - Add validators to forms
 
+- Change numbers models format to decimal
+
 
 
 ## Lessons Learned
