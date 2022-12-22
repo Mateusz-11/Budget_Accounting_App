@@ -37,15 +37,15 @@
                 </tbody>
             </table>
         </div>
-    {% if invoices.has_other_pages %}
-        <div class="pagination">
+        {% if invoices.has_other_pages %}
+            <div class="pagination">
     <span class="step-links">
         {% if invoices.has_previous %}
             {#            <a href="?page=1">&laquo; first</a>#}
             <a href="?page={{ invoices.previous_page_number }}">previous</a>
         {% endif %}
 
-            <span class="current">
+        <span class="current">
             Page {{ invoices.number }} of {{ invoices.paginator.num_pages }}.
             </span>
 
@@ -55,8 +55,8 @@
             {#            <a href="?page={{ invoices.paginator.num_pages }}">last &raquo;</a>#}
         {% endif %}
     </span>
-        </div>
-            {% endif %}
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}
