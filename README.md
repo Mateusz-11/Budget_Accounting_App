@@ -84,11 +84,11 @@ To run tests, run the following command
 
 ## Lessons Learned
 
-- I shoud better plan models and views
+- I should better plan models and views
 
-- I shoud make a To-Do list with tasks
+- I should make a To-Do list with tasks
 
-- I shuld give the app to manual tests with real users
+- I should give the app to manual tests with real users
 
 ## 🛠 Technology
 
