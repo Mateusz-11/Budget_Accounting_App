@@ -68,18 +68,22 @@ To run tests, run the following command
 
 ## Roadmap
 
-- Optimalization models (delete Category)
+- Optimalization models (delete Category) - **
 
-- Additional information about budget overruns
+- Additional information about budget overruns - *
 
-- View data on the charts
+- View data on the charts - *
 
-- Add mobile view
+- Add mobile view - **
 
-- Add validators to forms
+- Add validators to forms - ***
 
-- Change numbers models format to decimal
+- Change numbers models format to decimal - ***
 
+#### Priority:
+- low - *
+- medium - **
+- high - *** 
 
 
 ## Lessons Learned
