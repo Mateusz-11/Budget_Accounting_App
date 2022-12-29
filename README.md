@@ -80,6 +80,9 @@ To run tests, run the following command
 
 - Change numbers models format to decimal - ***
 
+- Add a file to create fake database - ***
+
+
 #### Priority:
 - low - *
 - medium - **
