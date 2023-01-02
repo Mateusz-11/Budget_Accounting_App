@@ -82,6 +82,8 @@ To run tests, run the following command
 
 - Add a file to create fake database - ***
 
+- Add more tests of application - ***
+
 
 #### Priority:
 - low - *
@@ -96,6 +98,8 @@ To run tests, run the following command
 - I should make a To-Do list with tasks
 
 - I should give the app to manual tests with real users
+
+- I should write more tests
 
 ## 🛠 Technology
 
